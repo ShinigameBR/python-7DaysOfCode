@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avatar - Personagens</title>
+  </head>
+  <body>
+    <h1>Personagens</h1>
+    <ul>
+      {% for character in data %}
+      <li>
+        Nome: {{ character.name }}<br />
+        Afiliação: {{ character.affiliation }}<br />
+        Aliados: {{ character.allies|last}}<br />
+        Inimigos: {{ character.enemies|last}}<br />
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
