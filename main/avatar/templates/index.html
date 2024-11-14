@@ -1,21 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avatar - Personagens</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <h1>Personagens</h1>
-    <ul>
-      {% for character in data %}
-      <li>
-        Nome: {{ character.name }}<br />
-        Afiliação: {{ character.affiliation }}<br />
-        Aliados: {{ character.allies|last}}<br />
-        Inimigos: {{ character.enemies|last}}<br />
-      </li>
-      {% endfor %}
-    </ul>
+    <div class="container my-4">
+      <h1 class="text-center mb-4">Personagens de Avatar</h1>
+      <div class="row">
+        {% for character in data %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img
+              src="{% if character.photoUrl %}{{ character.photoUrl }}{% else %}https://png.pngtree.com/png-clipart/20210606/original/pngtree-gray-avatar-placeholder-png-image_6398267.jpg{% endif %}"
+              class="card-img-top"
+              style="width: 100%; max-height: 220px; object-fit: fill;"
+              alt="{{ character.name }}"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ character.name }}</h5>
+              <p class="card-text">
+                <strong>Afiliação:</strong> {{ character.affiliation }}<br />
+                <strong>Aliados:</strong> {{ character.allies|last }}<br />
+                <strong>Inimigos:</strong> {{ character.enemies|last }}<br />
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
   </body>
 </html>
