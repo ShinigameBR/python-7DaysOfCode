@@ -21,7 +21,7 @@
       <h1 class="text-center mb-4">Personagens de Avatar</h1>
       <div class="row">
         {% for character in data %}
-        <div class="col-md-4 mb-4">
+        <div id="{{ forloop.counter }}" class="col-md-3 mb-4">
           <div class="card h-100">
             <img
               src="{% if character.photoUrl %}{{ character.photoUrl }}{% else %}https://png.pngtree.com/png-clipart/20210606/original/pngtree-gray-avatar-placeholder-png-image_6398267.jpg{% endif %}"
