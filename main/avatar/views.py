@@ -6,7 +6,9 @@ from translate import Translator
 # Create your views here.
 def characters(request):
     # URL da API de Avatar
-    url = "https://last-airbender-api.fly.dev/api/v1/characters"
+    page = request.GET.get('page', 1)
+    items_per_page = 8
+    url = f'https://last-airbender-api.fly.dev/api/v1/characters?perPage={items_per_page}&page={page}'
 
     # Fazendo a requisição GET
     response = requests.get(url)
@@ -28,4 +30,4 @@ def characters(request):
     else:
         print(f"Erro ao fazer a requisição. Status code: {response.status_code}")
 
-    return render(request, 'index.html', {'data': data})
+    return render(request, "index.html", {'data': data, 'page': int(page)})
